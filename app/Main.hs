@@ -6,7 +6,7 @@ import Control.Monad
 server :: MVar () -> MVar String -> IO ()
 server endEvent mv = do
     putStrLn "server start"
-    forever $ do
+    void $ forever $ do
         x <- takeMVar mv
         putStrLn x
     putStrLn "server end"
@@ -22,7 +22,7 @@ main :: IO ()
 main = do
     endEvent <- newEmptyMVar
     mv <- newEmptyMVar
-    _  <- forkIO $ server endEvent mv
-    _  <- forkIO $ client "1" mv
-    void (forkIO $ client "2" mv)
+    void $ forkIO $ server endEvent mv
+    void $ forkIO $ client "1" mv
+    void $ forkIO $ client "2" mv
     threadDelay 10000000

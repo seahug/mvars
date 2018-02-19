@@ -5,7 +5,7 @@ Haskell application with main executable only built using Stack
 ## Clone repository
 
 ```
-git clone https://github.com/rcook/mvars.git
+git clone https://github.com/seahug/mvars.git
 ```
 
 ## Install compiler
